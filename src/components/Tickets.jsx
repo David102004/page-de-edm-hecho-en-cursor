@@ -72,15 +72,15 @@ export default function Tickets() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.2 }}
               whileHover={{ scale: 1.05, y: -10 }}
-              className={`relative glass rounded-2xl p-8 ${
+              className={`relative glass rounded-2xl p-8 flex flex-col ${
                 tier.popular
-                  ? 'border-2 border-gold-light glow-gold scale-105'
+                  ? '!border-2 !border-gold-light glow-gold scale-105'
                   : ''
               }`}
             >
               {tier.popular && (
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <span className="bg-gradient-to-r from-gold-light to-gold-dark text-black px-4 py-1 rounded-full text-sm font-bold">
+                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
+                  <span className="bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 text-black px-4 py-1 rounded-full text-sm font-bold shadow-lg">
                     MOST POPULAR
                   </span>
                 </div>
@@ -88,15 +88,25 @@ export default function Tickets() {
 
               <h3 className="text-3xl font-bold mb-2">{tier.name}</h3>
               <div className="mb-6">
-                <span className="text-5xl font-black text-gradient">
+                <span
+                  className={`text-5xl font-black ${
+                    tier.popular ? 'text-gradient-gold' : 'text-gradient'
+                  }`}
+                >
                   {tier.price}
                 </span>
               </div>
 
-              <ul className="space-y-3 mb-8">
+              <ul className="space-y-3 mb-8 flex-1">
                 {tier.features.map((feature, idx) => (
                   <li key={idx} className="flex items-start gap-2">
-                    <span className="text-purple-400 mt-1">✓</span>
+                    <span
+                      className={`mt-1 ${
+                        tier.popular ? 'text-gold-light' : 'text-purple-400'
+                      }`}
+                    >
+                      ✓
+                    </span>
                     <span className="text-gray-300">{feature}</span>
                   </li>
                 ))}
@@ -107,8 +117,8 @@ export default function Tickets() {
                 whileTap={{ scale: 0.95 }}
                 className={`w-full py-4 rounded-full font-bold text-lg transition-all ${
                   tier.popular
-                    ? 'bg-gradient-to-r from-gold-light to-gold-dark text-black hover:glow-gold'
-                    : 'bg-gradient-to-r from-purple-600 to-pink-600 hover:glow'
+                    ? 'bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 text-black hover:glow-gold shadow-lg shadow-yellow-500/50'
+                    : 'bg-gradient-to-r from-purple-600 to-pink-600 text-white hover:glow'
                 }`}
               >
                 Buy Now
