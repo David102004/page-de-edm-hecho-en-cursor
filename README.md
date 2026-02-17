@@ -158,3 +158,6 @@ La sección de tickets (`src/components/Tickets.jsx`) está diseñada específic
 
 git clone <URL_DE_TU_REPO>
 cd page-de-edm-v2
+
+### 2. Para correrlo
+npm run dev
